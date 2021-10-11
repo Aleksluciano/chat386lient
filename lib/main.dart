@@ -72,8 +72,10 @@ class _FirstScreenState extends State<FirstScreen> {
     _nickName = _controllerNick.text.toUpperCase();
   }
 
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar:
       AppBar(title: Text(widget.title, style: GoogleFonts.pressStart2p())),
@@ -87,6 +89,7 @@ class _FirstScreenState extends State<FirstScreen> {
               child: TextField(
                 controller: _controllerNick,
                 style: GoogleFonts.pressStart2p(),
+                onSubmitted: (value) { Navigator.pushNamed(context, '/second', arguments: _nickName);},
                 decoration: new InputDecoration(
                   focusedBorder: OutlineInputBorder(
                     borderSide:
@@ -104,10 +107,7 @@ class _FirstScreenState extends State<FirstScreen> {
               height: 50,
               margin: EdgeInsets.only(left: 20),
               child: ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/second',
-                        arguments: _nickName);
-                  },
+                  onPressed:  () { Navigator.pushNamed(context, '/second', arguments: _nickName);},
                   child: Text("Entrar no chat",
                       style: GoogleFonts.pressStart2p())),
             )
